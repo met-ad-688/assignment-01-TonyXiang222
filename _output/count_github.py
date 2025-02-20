@@ -1,17 +1,12 @@
-
 import pandas as pd
 
-# Define the correct CSV file names
-files = ["../question_tags.csv", "../questions.csv"]  # Update file names as needed
+# List of CSV files
+files = ["question_tags.csv", "questions.csv"]
+chunk_size = 10000  # Read 10,000 rows at a time
 count = 0
 
 for file in files:
-    try:
-        df = pd.read_csv(file, encoding='utf-8', on_bad_lines='skip')  # Read CSV safely
-        count += df.apply(lambda row: row.astype(str).str.contains("GitHub", case=False, na=False).any(), axis=1).sum()
-    except FileNotFoundError:
-        print(f"Warning: {file} not found.")
-    except Exception as e:
-        print(f"Error processing {file}: {e}")
+    for chunk in pd.read_csv(file, dtype=str, chunksize=chunk_size):
+        count += chunk.apply(lambda col: col.str.contains("GitHub", case=False, na=False)).any(axis=1).sum()
 
 print(f"Total lines containing 'GitHub': {count}")

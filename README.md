@@ -5,3 +5,5 @@ TonyXiang222 assignment 01
 ./_output/count_python.sh         # Run the script
 1064820
 
+ubuntu@ip-172-31-36-36:~/github-classroom/met-ad-688/assignment-01-TonyXiang222$ /usr/bin/python3 /home/ubuntu/github-classroom/met-ad-688/assignment-01-TonyXiang222/count_github.py
+Total lines containing 'GitHub': 32725
