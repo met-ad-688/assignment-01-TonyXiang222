@@ -1,4 +1,5 @@
 #!/bin/bash
-count=$(grep -i "python"  inflating: question_tags.csv | wc -l)
-echo "Number of lines containing 'python' in CSV files: $count"
+# This script counts the number of lines containing the word "python" in all CSV files.
+
+grep -i "python" *.csv | wc -l
 
